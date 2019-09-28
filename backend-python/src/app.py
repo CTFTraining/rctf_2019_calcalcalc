@@ -10,7 +10,8 @@ app = Flask(__name__)
 def calculate():
     data = request.get_data()
     expr = bson.BSON(data).decode()
-    del __builtins__.exec
+    if 'exec' in dir(__builtins__):
+        del __builtins__.exec
     return bson.BSON.encode({
         "ret": str(eval(str(expr['expression'])))
     })

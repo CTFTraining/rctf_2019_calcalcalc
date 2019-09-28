@@ -21,7 +21,7 @@ export class AppController {
   @Post('/calculate')
   calculate(@Body() calculateModel: CalculateModel, @Res() res: Response) {
     const serializedBson = bson.serialize(calculateModel);
-    const urls = ['10.0.20.11', '10.0.20.12', '10.0.20.13'];
+    const urls = ['node', 'php', 'python'];
     bluebird.map(urls, async (url) => {
       return Axios.post(`http://${url}/`, serializedBson, {
         headers: {

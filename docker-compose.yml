@@ -2,7 +2,7 @@ version: '2'
 services:
   frontend:
     build: ./frontend
-    image: ctftraining/rctf_2019_calclcalc:frontend
+    image: ctftraining/rctf_2019_calclcalc_frontend
     ports:
       - "127.0.0.1:8082:3000"
     # mem_limit: 300M
@@ -10,11 +10,13 @@ services:
     networks:
       calcalcalc_network:
         ipv4_address: 10.0.20.10
+        aliases:
+          - web
       calcalcalc_out_network:
         ipv4_address: 10.0.30.10
   backend-node:
     build: ./backend-node
-    image: ctftraining/rctf_2019_calclcalc:backend_node
+    image: ctftraining/rctf_2019_calclcalc_backend_node
     volumes:
       - ./flag:/flag
     # mem_limit: 200M
@@ -22,9 +24,11 @@ services:
     networks:
       calcalcalc_network:
         ipv4_address: 10.0.20.11
+        aliases:
+          - node
   backend-python:
     build: ./backend-python
-    image: ctftraining/rctf_2019_calclcalc:backend_python
+    image: ctftraining/rctf_2019_calclcalc_backend_python
     ulimits:
       nproc: 15
     volumes:
@@ -34,9 +38,11 @@ services:
     networks:
       calcalcalc_network:
         ipv4_address: 10.0.20.12
+        aliases:
+          - python
   backend-php:
     build: ./backend-php
-    image: ctftraining/rctf_2019_calclcalc:backend_php
+    image: ctftraining/rctf_2019_calclcalc_backend_php
     volumes:
       - ./flag:/flag
     # mem_limit: 200M
@@ -44,6 +50,8 @@ services:
     networks:
       calcalcalc_network:
         ipv4_address: 10.0.20.13
+        aliases:
+          - php
 networks:
     calcalcalc_network:
         internal: true

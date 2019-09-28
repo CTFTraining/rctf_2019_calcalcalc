@@ -18,4 +18,7 @@ RUN docker-php-source extract && \
 
 WORKDIR /var/www/html
 
-CMD ["/usr/local/bin/php","-S","0.0.0.0:80"]
+COPY ./start.sh /start.sh
+RUN chmod +x /start.sh
+
+CMD ["/start.sh"]
