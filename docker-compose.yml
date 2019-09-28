@@ -21,6 +21,8 @@ services:
       - ./flag:/flag
     # mem_limit: 200M
     restart: always
+    environment:
+      - FLAG=flag{test_flag}
     networks:
       calcalcalc_network:
         ipv4_address: 10.0.20.11
@@ -35,6 +37,8 @@ services:
       - ./flag:/flag
     # mem_limit: 200M
     restart: always
+    environment:
+      - FLAG=flag{test_flag}
     networks:
       calcalcalc_network:
         ipv4_address: 10.0.20.12
@@ -47,6 +51,8 @@ services:
       - ./flag:/flag
     # mem_limit: 200M
     restart: always
+    environment:
+      - FLAG=flag{test_flag}
     networks:
       calcalcalc_network:
         ipv4_address: 10.0.20.13
